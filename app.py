@@ -17,7 +17,7 @@ def webhook():
     try:
         resp = requests.post(TARGET_URL, json=data, headers={
             'Content-Type': 'application/json'
-        }, timeout=10)
+        }, timeout=30)
         # Возвращаем ответ от функции обратно Telegram (обычно просто 200 OK)
         return resp.content, resp.status_code
     except Exception as e:
