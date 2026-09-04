@@ -1,3 +1,4 @@
+import os
 import requests
 from flask import Flask, request, Response
 
@@ -16,3 +17,7 @@ def proxy(path):
         return Response(resp.content, status=resp.status_code, content_type=resp.headers.get('Content-Type', 'application/json'))
     except Exception as e:
         return Response(f"Proxy error: {e}", status=502)
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
