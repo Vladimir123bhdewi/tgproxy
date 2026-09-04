@@ -6,6 +6,10 @@ app = Flask(__name__)
 
 TELEGRAM_BASE = "https://api.telegram.org"
 
+@app.route('/ping', methods=['GET'])
+def ping():
+    return "OK", 200
+
 @app.route('/<path:path>', methods=['GET', 'POST'])
 def proxy(path):
     url = f"{TELEGRAM_BASE}/{path}"
